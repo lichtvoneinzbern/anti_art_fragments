@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sandbox"
-author: sal
+author: minakami_rihito
 categories: [ Jekyll, tutorial ]
 image: assets/images/12.jpg
 featured: true
