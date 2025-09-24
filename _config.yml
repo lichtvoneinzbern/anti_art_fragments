@@ -6,13 +6,22 @@ logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /anti_art_fragments
 google_analytics: 'UA-46278016-1'
-disqus: 'demowebsite'
+disqus: 'anti_art_fragments'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
 
 # Authors
 authors:
+  licht:
+    name: 水上理人
+    display_name: 水上理人
+    avatar: 'assets/images/profile.png'
+    gravatar: b1cc14991db7a456fcd761680bbc8f81
+    email: licht.kumicho@gmail.com
+    web: https://github.com/lichtvoneinzbern
+    twitter: https://x.com/minakami_licht
+    description: "都内某所ゲーム会社勤務のアーティスト"
   sal:
     name: Sal
     display_name: Sal
