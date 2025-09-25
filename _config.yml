@@ -1,7 +1,7 @@
 # Site
 name: "反藝術的断章"
 title: "反藝術的断章"
-description: "技術備忘録、或いは取り留めのない思索"
+description: "技術備忘録、あるいは取り留めのない思索"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /anti_art_fragments
