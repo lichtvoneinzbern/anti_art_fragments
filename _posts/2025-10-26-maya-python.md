@@ -53,7 +53,8 @@ import os
 [path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
 ```
 
-:::details 出力サンプル
+<details open>
+  <summary>出力サンプル</summary>
 
 ```py
 ['C:/Users/owner/scripts',
@@ -97,7 +98,7 @@ import os
  'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/lib/python']
 ```
 
-:::
+</details>
 
 ## プラグインパスをすべて取得 -> List[str]
 
