@@ -261,13 +261,11 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 ```
 
-## リモートデバッグ用にコマンドポートを開く -> None
-
-```py:import
-import maya.cmds as cmds
-```
+### リモートデバッグ用にコマンドポートを開く -> None
 
 ```py:connect_command_port
+import maya.cmds as cmds
+
 def connect_command_port(port_num: str = "4435") -> None:
     """
     コマンドポートを接続(Mayaで使用)
@@ -287,16 +285,19 @@ def connect_command_port(port_num: str = "4435") -> None:
         cmds.commandPort(n=f":{port_num}")
 ```
 
-</details> message
+<details>
+  <summary>リモートデバッグを行うには</summary>
+
 この関数は単体では機能として成立しません。
 以下のようなページを参考に、コードエディタ側の設定も行う必要があります。
 
 - [MayaのスクリプトをPyCharmで楽にコーディングする](https://qiita.com/paty-6991/items/cdb59416761e9f35008f)
 - [Visual Studio Codeの機能拡張「MayaCode」でスクリプトを直接MAYAに送信・実行する方法](https://liquidjumper.com/programming/python/visual-studio-code_mayacode_maya)
-  </details>
+
+</details>
 
 
-# 参考
+## 参考
 
 - [環境変数(Maya 公式)](https://help.autodesk.com/view/MAYAUL/2024/JPN/?guid=GUID-925EB3B5-1839-45ED-AA2E-3184E3A45AC7)
 - [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
