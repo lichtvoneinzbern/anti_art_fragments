@@ -27,18 +27,20 @@ hidden: false
 
 ### 実行しているMayaのインストールパスを取得 -> str
 
-```py:get_maya_install_path
+```py
 import os
 os.environ["MAYA_LOCATION"]
 ```
 
 <details>
   <summary>出力サンプル</summary>
-　
+
+
 ```py
 "C:/Program Files/Autodesk/Maya2024"
 ```
-　
+
+
 </details>
 
 ### スクリプトパスを全て取得 -> List[str]
