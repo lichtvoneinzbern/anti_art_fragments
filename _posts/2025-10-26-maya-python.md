@@ -13,17 +13,11 @@ hidden: false
 
 ## このページについて
 
-このページでは「**コーディング環境**」を対象にした、コピペで使えるコードをまとめています。
-
-動作確認のできている最新バージョンは以下の通りです。
-
-### 動作確認環境
-| 対象   | バージョン                                                                       |
-| ------ | -------------------------------------------------------------------------------- |
-| Maya   | 2024.2                                                                           |
-| Python | 3.10.8 |
+このページでは「Autodesk Maya」を対象にした、Pythonコードをまとめています。
 
 ***
+
+## 環境設定
 
 ### 取得
 
@@ -31,165 +25,85 @@ hidden: false
 
 ```py
 import os
-os.environ["MAYA_LOCATION"]
-```
 
-出力例
-```py
-"C:/Program Files/Autodesk/Maya2024"
+maya_location: str = os.environ["MAYA_LOCATION"]
+# >>> "C:/Program Files/Autodesk/Maya2024"
 ```
 
 ***
 
-#### スクリプトパスを全て取得 -> List[str]
+#### スクリプトパスを全て取得 -> list[str]
 
 ```py
 import os
-[path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
-```
 
-
-出力例
-
-```py
-['C:/Users/owner/scripts', ...]
+script_paths: list[str] = [path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
+# >>> ['C:/Users/owner/scripts', ...]
 ```
 
 ***
 
-#### プラグインパスをすべて取得 -> List[str]
+#### プラグインパスをすべて取得 -> list[str]
 
-```py:get_maya_plugin_paths
-import os
-[path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
-```
-
-出力例
 ```py
-['C:/Users/owner/Documents/maya/2024/plug-ins', ...]
+import os
+
+plugin_paths: list[str] = [path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
+# >>> ['C:/Users/owner/Documents/maya/2024/plug-ins', ...]
 ```
 
 ***
 
-#### モジュールパスを全て取得 -> List[str]
+#### モジュールパスを全て取得 -> list[str]
 
-```py:get_maya_module_paths
-import os
-[path for path in os.environ["MAYA_MODULE_PATH"].split(";")[:-1]]
-```
-
-出力例
 ```py
-['C:/Program Files/Autodesk/Maya2024/modules', ...]
+import os
+
+module_paths: list[str] = [path for path in os.environ["MAYA_MODULE_PATH"].split(";")[:-1]]
+# >>> ['C:/Program Files/Autodesk/Maya2024/modules', ...]
 ```
 
-#### pythonパスを全て取得 -> List[str]
+#### PYTHONPATHを全て取得 -> list[str]
 
-```py:get_python_paths
+```py
 import sys
-[path for path in sys.path]
+
+python_paths: list[str] = [path for path in sys.path]
+# >>> ['C:/Users/owner/Documents/maya/2024/scripts/site-packages', ...]
 ```
-
-<details>
-  <summary>出力サンプル</summary>
-
-```py
-['C:/Users/owner/Documents/maya/2024/scripts/site-packages',
- 'C:\\Program Files\\Autodesk\\Maya2024',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\ATF\\scripts',
- 'C:\\Program Files\\Autodesk\\Bifrost\\Maya2024\\2.7.1.1\\bifrost\\scripts',
- 'C:\\Program Files\\Common '
- 'Files\\Autodesk\\ApplicationPlugins\\bifrost\\Contents\\scripts',
- 'C:\\Program '
- 'Files\\Autodesk\\LookdevX\\Maya\\2024\\1.2.0\\plug-ins\\lookdevx\\scripts',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\MASH\\scripts',
- 'C:\\Program '
- 'Files\\Autodesk\\MayaUSD\\Maya2024\\0.25.0\\mayausd\\MayaUSD\\plugin\\adsk\\scripts',
- 'C:\\Program '
- 'Files\\Autodesk\\MayaUSD\\Maya2024\\0.25.0\\mayausd\\MayaUSD\\lib\\scripts',
- 'C:\\Program '
- 'Files\\Autodesk\\MayaUSD\\Maya2024\\0.25.0\\mayausd\\USD\\lib\\python',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\fbx\\scripts',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\camd\\scripts',
- 'C:\\Program Files\\Allegorithmic\\Adobe Substance 3D for Maya\\2024\\scripts',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\sweep\\scripts',
- 'C:\\Program Files\\Autodesk\\Bifrost\\Maya2024\\2.7.1.1\\vnn\\scripts',
- 'C:\\Program Files\\Autodesk\\Maya2024\\plug-ins\\xgen\\scripts',
- 'C:\\Program '
- 'Files\\Autodesk\\Bifrost\\Maya2024\\2.7.1.1\\bifrost\\python\\site-packages',
- 'C:\\Program '
- 'Files\\Autodesk\\LookdevX\\Maya\\2024\\1.2.0\\plug-ins\\lookdevx\\python',
- 'C:\\Program '
- 'Files\\Autodesk\\MayaUSD\\Maya2024\\0.25.0\\mayausd\\MayaUSD\\lib\\python',
- 'C:\\Program Files\\Autodesk\\Maya2024\\bin\\python310.zip',
- 'C:\\Program Files\\Autodesk\\Maya2024\\Python\\DLLs',
- 'C:\\Program Files\\Autodesk\\Maya2024\\Python\\lib',
- 'C:\\Program Files\\Autodesk\\Maya2024\\bin',
- 'C:\\Program Files\\Autodesk\\Maya2024\\Python',
- 'C:\\Program Files\\Autodesk\\Maya2024\\Python\\lib\\site-packages',
- 'C:\\Users\\owner\\AppData\\Roaming\\Python\\Python310\\site-packages',
- 'C:\\Program Files\\Autodesk\\Maya2024\\bin\\python310.zip\\lib-tk',
- 'C:/Users/owner/Documents/maya/2024/prefs/scripts',
- 'C:/Users/owner/Documents/maya/2024/scripts',
- 'C:/Users/owner/Documents/maya/scripts']
-
-```
-
-</details>
 
 #### pythonのバージョンを取得 -> str
 
-```py:get_python_version
+```py
 import sys
-sys.version
+
+python_version: str = sys.version
+# >>> "3.10.10 (tags/v3.10.10:721ac2e, Aug 17 2023, 20:49:22) [MSC v.1929 64 bit (AMD64)]"
 ```
 
-<details>
-  <summary>出力サンプル</summary>
+#### pythonのメジャーバージョンを取得 -> str
 
 ```py
-3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)]
-```
-
-</details>
-
-#### pythonのメジャーバージョンを取得 -> int
-
-```py:get_python_major_version
 import sys
-sys.version_info.major
+
+python_major_version: str = str(sys.version_info.major)
+# >>> "3"
 ```
 
-<details>
-  <summary>出力サンプル</summary>
+#### pythonのマイナーバージョンを取得 -> str
 
 ```py
-3
-```
-
-</details>
-
-#### pythonのマイナーバージョンを取得 -> int
-
-```py:get_python_minor_version
 import sys
-sys.version_info.minor
+
+python_minor_version: str = sys.version_info.minor
+# >>> "10"
 ```
-
-<details>
-  <summary>出力サンプル</summary>
-
-```py
-10
-```
-
-</details>
 
 ### 設定
 
-#### スクリプト自身が存在するパスをPythonパスに追加 -> None
+#### スクリプト自身のディレクトリをPythonパスに追加 -> None
 
-```py:set_self_path_to_sys_path
+```py
 import sys
 from pathlib import Path
 
@@ -198,7 +112,7 @@ sys.path.append(str(Path(__file__).parent))
 
 #### リモートデバッグ用にコマンドポートを開く -> None
 
-```py:connect_command_port
+```py
 import maya.cmds as cmds
 
 def connect_command_port(port_num: str = "4435") -> None:
@@ -232,7 +146,7 @@ def connect_command_port(port_num: str = "4435") -> None:
 </details>
 
 
-### 参考
+### 参考資料
 
 - [環境変数(Maya 公式)](https://help.autodesk.com/view/MAYAUL/2024/JPN/?guid=GUID-925EB3B5-1839-45ED-AA2E-3184E3A45AC7)
 - [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
