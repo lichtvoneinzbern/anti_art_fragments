@@ -32,21 +32,14 @@ import os
 os.environ["MAYA_LOCATION"]
 ```
 
-<details>
-  <summary>出力サンプル</summary>
-
-
+出力例
 ```py
 "C:/Program Files/Autodesk/Maya2024"
 ```
 
-
-</details>
-
 ***
 
 #### スクリプトパスを全て取得 -> List[str]
-
 
 ```py
 import os
@@ -54,52 +47,13 @@ import os
 ```
 
 
-<details>
-  <summary>出力サンプル</summary>
+出力例
 
 ```py
-['C:/Users/owner/scripts',
- 'C:/Users/owner/Documents/maya/2024/scripts',
- 'C:/Users/owner/Documents/maya/scripts',
- 'C:/Users/owner/Documents/maya/2024/presets',
- 'C:/Users/owner/Documents/maya/2024/prefs/shelves',
- 'C:/Users/owner/Documents/maya/2024/prefs/markingMenus',
- 'C:/Users/owner/Documents/maya/2024/prefs/scripts',
- 'C:/Program Files/Autodesk/Maya2024/scripts',
- 'C:/Program Files/Autodesk/Maya2024/scripts/startup',
- 'C:/Program Files/Autodesk/Maya2024/scripts/shelves',
- 'C:/Program Files/Autodesk/Maya2024/scripts/others',
- 'C:/Program Files/Autodesk/Maya2024/scripts/AETemplates',
- 'C:/Program Files/Autodesk/Maya2024/scripts/unsupported',
- 'C:/Program Files/Autodesk/Maya2024/scripts/paintEffects',
- 'C:/Program Files/Autodesk/Maya2024/scripts/fluidEffects',
- 'C:/Program Files/Autodesk/Maya2024/scripts/hair',
- 'C:/Program Files/Autodesk/Maya2024/scripts/cloth',
- 'C:/Program Files/Autodesk/Maya2024/scripts/live',
- 'C:/Program Files/Autodesk/Maya2024/scripts/fur',
- 'C:/Program Files/Autodesk/Maya2024/scripts/muscle',
- 'C:/Program Files/Autodesk/Maya2024/scripts/turtle',
- 'C:/Program Files/Autodesk/Maya2024/scripts/FBX',
- 'C:/Program Files/Autodesk/Maya2024/scripts/mayaHIK',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/ATF/scripts',
- 'C:/Program Files/Autodesk/Bifrost/Maya2024/2.7.1.1/bifrost/scripts',
- 'C:/Program Files/Common Files/Autodesk/ApplicationPlugins/bifrost/Contents/scripts',
- 'C:/Program Files/Autodesk/LookdevX/Maya/2024/1.2.0/plug-ins/lookdevx/scripts',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/MASH/scripts',
- 'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/plugin/adsk/scripts',
- 'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/lib/scripts',
- 'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/USD/lib/python',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/fbx/scripts',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/camd/scripts',
- 'C:/Program Files/Allegorithmic/Adobe Substance 3D for Maya/2024/scripts',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/sweep/scripts',
- 'C:/Program Files/Autodesk/Bifrost/Maya2024/2.7.1.1/vnn/scripts',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/xgen/scripts',
- 'C:/Program Files/Autodesk/LookdevX/Maya/2024/1.2.0/plug-ins/lookdevx/AEtemplate',
- 'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/lib/python']
+['C:/Users/owner/scripts', ...]
 ```
 
-</details>
+***
 
 #### プラグインパスをすべて取得 -> List[str]
 
@@ -108,33 +62,12 @@ import os
 [path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
 ```
 
-<details>
-  <summary>出力サンプル</summary>
-
+出力例
 ```py
-['C:/Users/owner/Documents/maya/2024/plug-ins',
- 'C:/Users/owner/Documents/maya/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/bin/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/ATF/plug-ins',
- 'C:/Program Files/Autodesk/Bifrost/Maya2024/2.7.1.1/bifrost/plug-ins',
- 'C:/Program Files/Common '
- 'Files/Autodesk/ApplicationPlugins/bifrost/Contents/plug-ins',
- 'C:/Program '
- 'Files/Autodesk/LookdevX/Maya/2024/1.2.0/plug-ins/lookdevx/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/MASH/plug-ins',
- 'C:/Program Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/lib/maya',
- 'C:/Program '
- 'Files/Autodesk/MayaUSD/Maya2024/0.25.0/mayausd/MayaUSD/plugin/adsk/plugin',
- 'C:/Program Files/Autodesk/Bifrost/Maya2024/2.7.1.1/bifrost/null',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/fbx/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/camd/plug-ins',
- 'C:/Program Files/Allegorithmic/Adobe Substance 3D for Maya/2024/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/sweep/plug-ins',
- 'C:/Program Files/Autodesk/Bifrost/Maya2024/2.7.1.1/vnn/plug-ins',
- 'C:/Program Files/Autodesk/Maya2024/plug-ins/xgen/plug-ins']
+['C:/Users/owner/Documents/maya/2024/plug-ins', ...]
 ```
 
-</details>
+***
 
 #### モジュールパスを全て取得 -> List[str]
 
@@ -143,16 +76,10 @@ import os
 [path for path in os.environ["MAYA_MODULE_PATH"].split(";")[:-1]]
 ```
 
-<details>
-  <summary>出力サンプル</summary>
-
+出力例
 ```py
-['C:/Program Files/Autodesk/Maya2024/modules',
- 'C:/Users/owner/Documents/maya/2024/modules',
- 'C:/Users/owner/Documents/maya/modules']
+['C:/Program Files/Autodesk/Maya2024/modules', ...]
 ```
-
-</details>
 
 #### pythonパスを全て取得 -> List[str]
 
