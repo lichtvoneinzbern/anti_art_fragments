@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Sandbox"
+title:  "Autodesk Maya - Pythonコード集"
 author: licht
 categories: [ maya, python ]
 # tags: [red, yellow]
-image: assets/images/12.jpg
+image: assets/images/maya_logo.jpg
 beforetoc: "D'où venons-nous ? Que sommes-nous ? Où allons-nous ?"
 toc: true
 featured: true
