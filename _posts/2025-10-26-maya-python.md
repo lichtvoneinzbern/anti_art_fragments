@@ -11,7 +11,7 @@ featured: true
 hidden: false
 ---
 
-# このページについて
+## このページについて
 
 このページでは「**コーディング環境**」を対象にした、コピペで使えるコードをまとめています。
 
@@ -23,25 +23,23 @@ hidden: false
 | Maya   | 2024.2                                                                           |
 | Python | 3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)] |
 
-# 取得
+## 取得
 
-## 実行しているMayaのインストールパスを取得 -> str
-
-```py:import
-import os
-```
+### 実行しているMayaのインストールパスを取得 -> str
 
 ```py:get_maya_install_path
+import os
 os.environ["MAYA_LOCATION"]
 ```
 
-:::details 出力サンプル
-
+<details>
+  <summary>出力サンプル</summary>
+　
 ```py
 "C:/Program Files/Autodesk/Maya2024"
 ```
-
-:::
+　
+</details>
 
 ## スクリプトパスを全て取得 -> List[str]
 
@@ -53,7 +51,7 @@ import os
 [path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
 ```
 
-<details open>
+<details>
   <summary>出力サンプル</summary>
 
 ```py
@@ -110,7 +108,8 @@ import os
 [path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 ['C:/Users/owner/Documents/maya/2024/plug-ins',
@@ -135,7 +134,7 @@ import os
  'C:/Program Files/Autodesk/Maya2024/plug-ins/xgen/plug-ins']
 ```
 
-:::
+</details>
 
 ## モジュールパスを全て取得 -> List[str]
 
@@ -147,7 +146,8 @@ import os
 [path for path in os.environ["MAYA_MODULE_PATH"].split(";")[:-1]]
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 ['C:/Program Files/Autodesk/Maya2024/modules',
@@ -155,7 +155,7 @@ import os
  'C:/Users/owner/Documents/maya/modules']
 ```
 
-:::
+</details>
 
 ## pythonパスを全て取得 -> List[str]
 
@@ -167,7 +167,8 @@ import sys
 [path for path in sys.path]
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 ['C:/Users/owner/Documents/maya/2024/scripts/site-packages',
@@ -211,7 +212,7 @@ import sys
 
 ```
 
-:::
+</details>
 
 ## pythonのバージョンを取得 -> str
 
@@ -223,13 +224,14 @@ import sys
 sys.version
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)]
 ```
 
-:::
+</details>
 
 ## pythonのメジャーバージョンを取得 -> int
 
@@ -241,13 +243,14 @@ import sys
 sys.version_info.major
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 3
 ```
 
-:::
+</details>
 
 ## pythonのマイナーバージョンを取得 -> int
 
@@ -259,13 +262,14 @@ import sys
 sys.version_info.minor
 ```
 
-:::details 出力サンプル
+<details>
+  <summary>出力サンプル</summary>
 
 ```py
 10
 ```
 
-:::
+</details>
 
 # 設定
 
@@ -280,7 +284,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 ```
 
-::: message
+</details> message
 このコマンドはスクリプトファイル（「.py」という拡張子の付いたファイル）から実行します。
 二つのアンダーバーで囲まれた「＿file＿」というコマンドがスクリプトファイル自身のパスが入った変数のようなものです。
 スクリプトファイルから実行しないと、この「＿file＿」というコマンドが用意されていません。
@@ -291,7 +295,7 @@ sys.path.append(str(Path(__file__).parent))
 ```
 
 とエラーが表示されてしまいます。
-:::
+</details>
 
 ## リモートデバッグ用にコマンドポートを開く -> None
 
@@ -319,13 +323,13 @@ def connect_command_port(port_num: str = "4435") -> None:
         cmds.commandPort(n=f":{port_num}")
 ```
 
-::: message
+</details> message
 この関数は単体では機能として成立しません。
 以下のようなページを参考に、コードエディタ側の設定も行う必要があります。
 
 - [MayaのスクリプトをPyCharmで楽にコーディングする](https://qiita.com/paty-6991/items/cdb59416761e9f35008f)
 - [Visual Studio Codeの機能拡張「MayaCode」でスクリプトを直接MAYAに送信・実行する方法](https://liquidjumper.com/programming/python/visual-studio-code_mayacode_maya)
-  :::
+  </details>
 
 
 # 参考
