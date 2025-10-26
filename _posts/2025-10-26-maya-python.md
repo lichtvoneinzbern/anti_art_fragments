@@ -43,12 +43,16 @@ os.environ["MAYA_LOCATION"]
 
 </details>
 
+***
+
 ### スクリプトパスを全て取得 -> List[str]
 
-```py:get_maya_script_paths
+
+```py
 import os
 [path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
 ```
+
 
 <details>
   <summary>出力サンプル</summary>
