@@ -41,13 +41,10 @@ os.environ["MAYA_LOCATION"]
 　
 </details>
 
-## スクリプトパスを全て取得 -> List[str]
-
-```py:import
-import os
-```
+### スクリプトパスを全て取得 -> List[str]
 
 ```py:get_maya_script_paths
+import os
 [path for path in os.environ["MAYA_SCRIPT_PATH"].split(";")[:-1]]
 ```
 
@@ -98,13 +95,10 @@ import os
 
 </details>
 
-## プラグインパスをすべて取得 -> List[str]
-
-```py:import
-import os
-```
+### プラグインパスをすべて取得 -> List[str]
 
 ```py:get_maya_plugin_paths
+import os
 [path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
 ```
 
@@ -136,13 +130,10 @@ import os
 
 </details>
 
-## モジュールパスを全て取得 -> List[str]
-
-```py:import
-import os
-```
+### モジュールパスを全て取得 -> List[str]
 
 ```py:get_maya_module_paths
+import os
 [path for path in os.environ["MAYA_MODULE_PATH"].split(";")[:-1]]
 ```
 
@@ -157,13 +148,10 @@ import os
 
 </details>
 
-## pythonパスを全て取得 -> List[str]
-
-```py:import
-import sys
-```
+### pythonパスを全て取得 -> List[str]
 
 ```py:get_python_paths
+import sys
 [path for path in sys.path]
 ```
 
@@ -214,13 +202,10 @@ import sys
 
 </details>
 
-## pythonのバージョンを取得 -> str
-
-```py:import
-import sys
-```
+### pythonのバージョンを取得 -> str
 
 ```py:get_python_version
+import sys
 sys.version
 ```
 
@@ -233,13 +218,10 @@ sys.version
 
 </details>
 
-## pythonのメジャーバージョンを取得 -> int
-
-```py:import
-import sys
-```
+### pythonのメジャーバージョンを取得 -> int
 
 ```py:get_python_major_version
+import sys
 sys.version_info.major
 ```
 
@@ -252,13 +234,10 @@ sys.version_info.major
 
 </details>
 
-## pythonのマイナーバージョンを取得 -> int
-
-```py:import
-import sys
-```
+### pythonのマイナーバージョンを取得 -> int
 
 ```py:get_python_minor_version
+import sys
 sys.version_info.minor
 ```
 
@@ -271,31 +250,16 @@ sys.version_info.minor
 
 </details>
 
-# 設定
+## 設定
 
-## スクリプト自身が存在するパスをPythonパスに追加 -> None
-
-```py:import
-import sys
-from pathlib import Path
-```
+### スクリプト自身が存在するパスをPythonパスに追加 -> None
 
 ```py:set_self_path_to_sys_path
+import sys
+from pathlib import Path
+
 sys.path.append(str(Path(__file__).parent))
 ```
-
-</details> message
-このコマンドはスクリプトファイル（「.py」という拡張子の付いたファイル）から実行します。
-二つのアンダーバーで囲まれた「＿file＿」というコマンドがスクリプトファイル自身のパスが入った変数のようなものです。
-スクリプトファイルから実行しないと、この「＿file＿」というコマンドが用意されていません。
-例えば、Mayaのスクリプトエディタから実行しようとすると、
-
-```py
-# Error: NameError: file <maya console> line 1: name '__file__' is not defined
-```
-
-とエラーが表示されてしまいます。
-</details>
 
 ## リモートデバッグ用にコマンドポートを開く -> None
 
