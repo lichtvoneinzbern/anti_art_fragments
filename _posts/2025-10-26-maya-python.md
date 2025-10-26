@@ -23,9 +23,9 @@ hidden: false
 | Maya   | 2024.2                                                                           |
 | Python | 3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)] |
 
-## 取得
+### 取得
 
-### 実行しているMayaのインストールパスを取得 -> str
+#### 実行しているMayaのインストールパスを取得 -> str
 
 ```py
 import os
@@ -45,7 +45,7 @@ os.environ["MAYA_LOCATION"]
 
 ***
 
-### スクリプトパスを全て取得 -> List[str]
+#### スクリプトパスを全て取得 -> List[str]
 
 
 ```py
@@ -101,7 +101,7 @@ import os
 
 </details>
 
-### プラグインパスをすべて取得 -> List[str]
+#### プラグインパスをすべて取得 -> List[str]
 
 ```py:get_maya_plugin_paths
 import os
@@ -136,7 +136,7 @@ import os
 
 </details>
 
-### モジュールパスを全て取得 -> List[str]
+#### モジュールパスを全て取得 -> List[str]
 
 ```py:get_maya_module_paths
 import os
@@ -154,7 +154,7 @@ import os
 
 </details>
 
-### pythonパスを全て取得 -> List[str]
+#### pythonパスを全て取得 -> List[str]
 
 ```py:get_python_paths
 import sys
@@ -208,7 +208,7 @@ import sys
 
 </details>
 
-### pythonのバージョンを取得 -> str
+#### pythonのバージョンを取得 -> str
 
 ```py:get_python_version
 import sys
@@ -224,7 +224,7 @@ sys.version
 
 </details>
 
-### pythonのメジャーバージョンを取得 -> int
+#### pythonのメジャーバージョンを取得 -> int
 
 ```py:get_python_major_version
 import sys
@@ -240,7 +240,7 @@ sys.version_info.major
 
 </details>
 
-### pythonのマイナーバージョンを取得 -> int
+#### pythonのマイナーバージョンを取得 -> int
 
 ```py:get_python_minor_version
 import sys
@@ -256,9 +256,9 @@ sys.version_info.minor
 
 </details>
 
-## 設定
+### 設定
 
-### スクリプト自身が存在するパスをPythonパスに追加 -> None
+#### スクリプト自身が存在するパスをPythonパスに追加 -> None
 
 ```py:set_self_path_to_sys_path
 import sys
@@ -267,7 +267,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 ```
 
-### リモートデバッグ用にコマンドポートを開く -> None
+#### リモートデバッグ用にコマンドポートを開く -> None
 
 ```py:connect_command_port
 import maya.cmds as cmds
@@ -303,7 +303,7 @@ def connect_command_port(port_num: str = "4435") -> None:
 </details>
 
 
-## 参考
+### 参考
 
 - [環境変数(Maya 公式)](https://help.autodesk.com/view/MAYAUL/2024/JPN/?guid=GUID-925EB3B5-1839-45ED-AA2E-3184E3A45AC7)
 - [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
