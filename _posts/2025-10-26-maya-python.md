@@ -5,17 +5,11 @@ author: licht
 categories: [ maya, python ]
 # tags: [red, yellow]
 image: assets/images/maya_logo.jpg
-beforetoc: "D'où venons-nous ? Que sommes-nous ? Où allons-nous ?"
+beforetoc: "「Autodesk Maya」で使用する、Pythonコードをまとめたページ。"
 toc: true
 featured: true
 hidden: false
 ---
-
-## このページについて
-
-このページでは「Autodesk Maya」を対象にした、Pythonコードをまとめています。
-
-***
 
 ## 環境設定
 
@@ -30,8 +24,6 @@ maya_location: str = os.environ["MAYA_LOCATION"]
 # >>> "C:/Program Files/Autodesk/Maya2024"
 ```
 
-***
-
 #### スクリプトパスを全て取得 -> list[str]
 
 ```py
@@ -41,8 +33,6 @@ script_paths: list[str] = [path for path in os.environ["MAYA_SCRIPT_PATH"].split
 # >>> ['C:/Users/owner/scripts', ...]
 ```
 
-***
-
 #### プラグインパスをすべて取得 -> list[str]
 
 ```py
@@ -51,8 +41,6 @@ import os
 plugin_paths: list[str] = [path for path in os.environ["MAYA_PLUG_IN_PATH"].split(";")[:-1]]
 # >>> ['C:/Users/owner/Documents/maya/2024/plug-ins', ...]
 ```
-
-***
 
 #### モジュールパスを全て取得 -> list[str]
 
@@ -145,6 +133,7 @@ def connect_command_port(port_num: str = "4435") -> None:
 
 </details>
 
+***
 
 ### 参考資料
 

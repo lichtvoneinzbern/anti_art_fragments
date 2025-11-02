@@ -704,6 +704,20 @@ h6 {
     margin-bottom: 1.5rem;
 }
 
+.article-post h2,
+.article-post .h2 {
+    background-color: #f5f5f5;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.article-post h3,
+.article-post .h3 {
+    border-bottom: 2px solid #00ab6b;
+    padding-bottom: 0.5rem;
+}
+
+
 .article-post img.shadow {
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
