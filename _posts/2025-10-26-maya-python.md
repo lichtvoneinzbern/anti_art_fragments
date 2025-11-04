@@ -11,7 +11,7 @@ featured: true
 hidden: false
 ---
 
-## 環境
+## 一般
 
 ### 取得
 
@@ -125,12 +125,42 @@ if not cmds.commandPort("4434", q=True):
 
 ### 取得
 
-####  現在のシーンパスを取得 -> str
+#### 現在開いているシーンのパスを取得 -> str
 
 ```py
 import maya.cmds as cmds
 
-cmds.file(q=True, sn=True)
+current_scene_path: str = cmds.file(q=True, sn=True)
 # >>> "C:/Users/owner/Desktop/test.ma"
 ```
 シーンが保存されていない場合、空の文字列が返却されます。
+
+#### 現在開いているシーンの名前を取得 -> str
+
+```py
+from pathlib import Path
+import maya.cmds as cmds
+
+current_scene_name: str = Path(cmds.file(q=True, sn=True)).stem
+```
+シーンが保存されていない場合、空の文字列が返却されます。
+
+#### 現在開いているシーンの拡張子を取得 -> str
+
+```py
+from pathlib import Path
+import maya.cmds as cmds
+
+current_scene_extention: str = Path(cmds.file(q=True, sn=True)).suffix.lstrip('.')
+```
+シーンが保存されていない場合、空の文字列が返却されます。
+
+### 設定
+
+#### 新規シーンを開く -> None
+
+```py
+import maya.cmds as cmds
+
+
+```
