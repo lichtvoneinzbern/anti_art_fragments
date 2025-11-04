@@ -11,7 +11,7 @@ featured: true
 hidden: false
 ---
 
-## 環境設定
+## 環境
 
 ### 取得
 
