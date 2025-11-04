@@ -132,8 +132,8 @@ import maya.cmds as cmds
 
 current_scene_path: str = cmds.file(q=True, sn=True)
 # >>> "C:/Users/owner/Desktop/test.ma"
+# シーンが保存されていない場合、空の文字列を返却
 ```
-シーンが保存されていない場合、空の文字列が返却されます。
 
 #### 現在開いているシーンの名前を取得 -> str
 
@@ -142,8 +142,10 @@ from pathlib import Path
 import maya.cmds as cmds
 
 current_scene_name: str = Path(cmds.file(q=True, sn=True)).stem
+# >>> "test"
+# シーンが保存されていない場合、空の文字列を返却
 ```
-シーンが保存されていない場合、空の文字列が返却されます。
+
 
 #### 現在開いているシーンの拡張子を取得 -> str
 
@@ -152,8 +154,9 @@ from pathlib import Path
 import maya.cmds as cmds
 
 current_scene_extention: str = Path(cmds.file(q=True, sn=True)).suffix.lstrip('.')
+# >>> "ma"
+# シーンが保存されていない場合、空の文字列を返却
 ```
-シーンが保存されていない場合、空の文字列が返却されます。
 
 ### 設定
 
@@ -162,5 +165,24 @@ current_scene_extention: str = Path(cmds.file(q=True, sn=True)).suffix.lstrip('.
 ```py
 import maya.cmds as cmds
 
+cmds.file(new=True, f=True)
+```
 
+#### 指定したパスのシーンを開く -> None
+
+```py
+import maya.cmds as cmds
+
+cmds.file("path/to/scene.ma", o=True, f=True, iv=True)  # iv == ignoreVersion
+```
+
+#### 現在開いているシーンを開き直す -> None
+
+```py
+from pathlib import Path
+import maya.cmds as cmds
+
+current_scene_path: str = cmds.file(q=True, sn=True)
+if current_scene_path:
+    cmds.file(current_scene_path, o=True, f=True)
 ```
