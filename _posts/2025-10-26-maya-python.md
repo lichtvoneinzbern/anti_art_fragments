@@ -114,9 +114,23 @@ if not cmds.commandPort("4434", q=True):
 - [MayaのスクリプトをPyCharmで楽にコーディングする](https://qiita.com/paty-6991/items/cdb59416761e9f35008f)
 - [Visual Studio Codeの機能拡張「MayaCode」でスクリプトを直接MAYAに送信・実行する方法](https://liquidjumper.com/programming/python/visual-studio-code_mayacode_maya)
 
-***
-
 ### 参考資料
 
 - [環境変数(Maya 公式)](https://help.autodesk.com/view/MAYAUL/2024/JPN/?guid=GUID-925EB3B5-1839-45ED-AA2E-3184E3A45AC7)
 - [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
+
+***
+
+## シーン
+
+### 取得
+
+####  現在のシーンパスを取得 -> str
+
+```py
+import maya.cmds as cmds
+
+cmds.file(q=True, sn=True)
+# >>> "C:/Users/owner/Desktop/test.ma"
+```
+シーンが保存されていない場合、空の文字列が返却されます。
