@@ -13,9 +13,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // ボタンの絶対配置のためにpre要素のpositionをrelativeに設定
         pre.style.position = 'relative'; 
 
-        // ボタンがクリックされたときの処理
         button.addEventListener('click', () => {
-            const codeToCopy = codeBlock.innerText; // code要素のテキストを取得
+            // codeBlockのクローンを作成し、その中の行番号要素を削除してからテキストを取得
+            const tempCodeBlock = codeBlock.cloneNode(true); // codeBlockを深くクローン
+
+            // `.lineno`クラスを持つspan要素が存在する場合、それらを削除
+            // Jekyllのシンタックスハイライターが生成する行番号要素に対応
+            tempCodeBlock.querySelectorAll('.lineno').forEach(linenoSpan => {
+                linenoSpan.remove();
+            });
+
+            // クリーンアップされたテキストを取得
+            let codeToCopy = tempCodeBlock.innerText;
+
+            // 行頭に余分な空白（行番号削除後に残る可能性のあるインデントなど）があれば削除
+            codeToCopy = codeToCopy.split('\n').map(line => line.trimStart()).join('\n');
+
             navigator.clipboard.writeText(codeToCopy).then(() => {
                 // コピー成功時のフィードバック
                 button.textContent = 'コピーしました！';
