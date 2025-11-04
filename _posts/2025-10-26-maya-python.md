@@ -2,7 +2,7 @@
 layout: post
 title:  "Autodesk Maya - Pythonコード集"
 author: licht
-categories: [ maya, python ]
+categories: [ maya ]
 # tags: [red, yellow]
 image: assets/images/maya_logo.jpg
 beforetoc: "「Autodesk Maya」で使用する、Pythonコードをまとめたページ。"
