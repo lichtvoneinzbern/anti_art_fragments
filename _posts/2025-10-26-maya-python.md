@@ -109,10 +109,8 @@ import maya.cmds as cmds
 if not cmds.commandPort("4434", q=True):
     cmds.commandPort(n="4434")
 ```
-
 この関数は単体では機能として成立しません。
 以下のようなページを参考に、コードエディタ側の設定も行う必要があります。
-
 - [MayaのスクリプトをPyCharmで楽にコーディングする](https://qiita.com/paty-6991/items/cdb59416761e9f35008f)
 - [Visual Studio Codeの機能拡張「MayaCode」でスクリプトを直接MAYAに送信・実行する方法](https://liquidjumper.com/programming/python/visual-studio-code_mayacode_maya)
 
