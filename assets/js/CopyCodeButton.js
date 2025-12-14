@@ -10,8 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
         button.className = 'copy-code-button';
         button.textContent = 'コピー';
 
-        // ボタンの絶対配置のためにpre要素のpositionをrelativeに設定
-        pre.style.position = 'relative';
+        /* ... existing code ... */
+        // ボタンをpreの中に入れるとpreの横スクロールに巻き込まれるため、
+        // preをラップしてボタンはラッパー側に配置する
+        const wrapper = document.createElement('div');
+        wrapper.className = 'codeblock-with-copy';
+
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        wrapper.appendChild(button);
+        /* ... existing code ... */
 
         button.addEventListener('click', () => {
             // codeBlockのクローンを作成し、その中の行番号要素を削除してからテキストを取得
@@ -46,6 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // pre要素にボタンを追加
-        pre.appendChild(button);
+        // （ボタンは wrapper に追加済み）
     });
 });
