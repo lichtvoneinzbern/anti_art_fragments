@@ -935,16 +935,23 @@ pre {
 /* コードブロック＋コピーボタン用ラッパー（ボタンをスクロール領域の外に置く） */
 .codeblock-with-copy {
     position: relative;
+    border: #E3EDF3 1px solid;
+    background: #fff;
 }
 
-/* ボタンがコードに被りすぎないよう上部に余白を確保（必要に応じて調整） */
+/* pre側の「枠」を消して、見た目の枠はwrapperに持たせる */
 .codeblock-with-copy > pre {
+    border: 0;
+    background: transparent;
+    margin: 0;
+    width: 100%;
+    overflow: auto;
     padding-top: 2.2rem;
 }
 
 /* copy-code-buttonのスタイル */
 .copy-code-button {
-    position: absolute; /* 親要素（pre）に対して絶対位置指定 */
+    position: absolute; /* 親要素（wrapper）に対して絶対位置指定 */
     top: 10px; /* 右上からの位置調整 */
     right: 10px; /* 右上からの位置調整 */
     background-color: #00ab6b; /* H3の下線色と同じカラーコード */
