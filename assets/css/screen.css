@@ -38,6 +38,37 @@ pre {
     margin-bottom: -rem;
 }
 
+/* コピーUI用：pre(スクロール)の外側にラッパーを作り、ボタンを右上固定 */
+.code-block-with-copy {
+    position: relative;
+}
+
+.code-block-with-copy > pre {
+    /* ボタンがコードに被らないように上に余白を追加 */
+    padding-top: 2.2rem;
+}
+
+/* copy-code-buttonのスタイル */
+.copy-code-button {
+    position: absolute; /* 親要素（ラッパー）に対して絶対位置指定 */
+    top: 10px; /* 右上からの位置調整 */
+    right: 10px; /* 右上からの位置調整 */
+    background-color: #00ab6b; /* H3の下線色と同じカラーコード */
+    color: #fff; /* 文字色を白に */
+    border: none; /* ボーダーなし */
+    padding: 5px 10px; /* パディング */
+    border-radius: 3px; /* 角丸 */
+    cursor: pointer; /* ホバー時にカーソルをポインターに */
+    font-size: 0.8em; /* フォントサイズ */
+    opacity: 0.8; /* デフォルトの透明度 */
+    transition: opacity 0.3s ease; /* ホバー時の透明度変化をスムーズに */
+    z-index: 10; /* 他の要素より手前に表示 */
+}
+
+.copy-code-button:hover {
+    opacity: 1; /* ホバー時に透明度をなくす */
+}
+
 .mediumnavigation {
     background: rgba(255, 255, 255, .97);
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
