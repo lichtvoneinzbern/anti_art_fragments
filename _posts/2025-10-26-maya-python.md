@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Autodesk Maya - Pythonコード集"
+title:  "Autodesk Maya - Pythonチートシート"
 author: licht
 categories: [ maya ]
 # tags: [red, yellow]
 image: assets/images/maya_logo.jpg
 beforetoc: "「Autodesk Maya」で使用する、Pythonコードをまとめたページ。"
 toc: true
-featured: true
+featured: false
 hidden: false
 ---
 
