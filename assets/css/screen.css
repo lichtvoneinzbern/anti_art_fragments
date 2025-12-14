@@ -953,7 +953,7 @@ pre .code-scroll > code {
 /* copy-code-buttonのスタイル */
 .copy-code-button {
     position: absolute; /* 親要素（pre）に対して絶対位置指定 */
-    top: 10px; /* 右上からの位置調整 */
+    top: 50px; /* 右上からの位置調整 */
     right: 10px; /* 右上からの位置調整 */
     background-color: #00ab6b; /* H3の下線色と同じカラーコード */
     color: #fff; /* 文字色を白に */
