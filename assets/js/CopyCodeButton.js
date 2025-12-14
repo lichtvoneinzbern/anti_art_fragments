@@ -5,34 +5,38 @@ document.addEventListener('DOMContentLoaded', function() {
     codeBlocks.forEach(codeBlock => {
         const pre = codeBlock.parentNode; // pre要素（codeタグの親）
 
-        // すでにラップ済みなら何もしない（重複対策）
-        if (pre.parentElement && pre.parentElement.classList.contains('code-block-with-copy')) {
-            return;
-        }
-
         // コピーボタン要素を作成
         const button = document.createElement('button');
         button.className = 'copy-code-button';
-        button.type = 'button';
         button.textContent = 'コピー';
 
-        // ... existing code ...
-        button.addEventListener('click', () => {
-            const tempCodeBlock = codeBlock.cloneNode(true);
+        // ボタンの絶対配置のためにpre要素のpositionをrelativeに設定
+        pre.style.position = 'relative';
 
+        button.addEventListener('click', () => {
+            // codeBlockのクローンを作成し、その中の行番号要素を削除してからテキストを取得
+            const tempCodeBlock = codeBlock.cloneNode(true); // codeBlockを深くクローン
+
+            // `.lineno`クラスを持つspan要素が存在する場合、それらを削除
+            // Jekyllのシンタックスハイライターが生成する行番号要素に対応
             tempCodeBlock.querySelectorAll('.lineno').forEach(linenoSpan => {
                 linenoSpan.remove();
             });
 
+            // クリーンアップされたテキストを取得
             let codeToCopy = tempCodeBlock.innerText;
+
+            // 行頭に余分な空白（行番号削除後に残る可能性のあるインデントなど）があれば削除
             codeToCopy = codeToCopy.split('\n').map(line => line.trimStart()).join('\n');
 
             navigator.clipboard.writeText(codeToCopy).then(() => {
+                // コピー成功時のフィードバック
                 button.textContent = 'コピーしました！';
                 setTimeout(() => {
                     button.textContent = 'コピー';
-                }, 2000);
+                }, 2000); // 2秒後に元のテキストに戻す
             }).catch(err => {
+                // コピー失敗時のフィードバック
                 console.error('テキストのコピーに失敗しました: ', err);
                 button.textContent = 'コピー失敗';
                 setTimeout(() => {
@@ -41,20 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // pre をラップする（スクロールは pre、ボタン固定はラッパーで行う）
-        const wrapper = document.createElement('div');
-        wrapper.className = 'code-block-with-copy';
-
-        // ここが重要：absolute の基準を必ずこのラッパーにする
-        wrapper.style.position = 'relative';
-
-        // 念のため：ボタンもJS側で absolute を強制（他CSSの上書き対策）
-        button.style.position = 'absolute';
-        button.style.top = '10px';
-        button.style.right = '10px';
-
-        pre.parentNode.insertBefore(wrapper, pre);
-        wrapper.appendChild(button);
-        wrapper.appendChild(pre);
+        // pre要素にボタンを追加
+        pre.appendChild(button);
     });
 });

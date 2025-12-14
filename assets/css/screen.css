@@ -915,16 +915,6 @@ iframe {
     transition: opacity .25s;
 }
 
-/* コピーUI用：preの外側ラッパーを「absoluteの基準」にする */
-.code-block-with-copy {
-    position: relative;
-}
-
-/* 必要なら、ボタンがコードに被らないように上を空ける */
-.code-block-with-copy > pre {
-    padding-top: 2.2rem;
-}
-
 /* copy-code-buttonのスタイル */
 .copy-code-button {
     position: absolute; /* 親要素（pre）に対して絶対位置指定 */
