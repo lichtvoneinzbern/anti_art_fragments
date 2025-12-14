@@ -4,14 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     codeBlocks.forEach(codeBlock => {
         const pre = codeBlock.parentNode; // pre要素（codeタグの親）
-        
+
+        // すでにラップ済みなら何もしない（重複対策）
+        if (pre.parentElement && pre.parentElement.classList.contains('code-block-with-copy')) {
+            return;
+        }
+
         // コピーボタン要素を作成
         const button = document.createElement('button');
         button.className = 'copy-code-button';
+        button.type = 'button';
         button.textContent = 'コピー';
 
         // ボタンの絶対配置のためにpre要素のpositionをrelativeに設定
-        pre.style.position = 'relative'; 
+        pre.style.position = 'relative';
 
         button.addEventListener('click', () => {
             // codeBlockのクローンを作成し、その中の行番号要素を削除してからテキストを取得
@@ -44,8 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 2000);
             });
         });
-        
-        // pre要素にボタンを追加
-        pre.appendChild(button);
+        // pre をラップする（スクロールは pre、ボタン固定はラッパーで行う）
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-with-copy';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(button);
+        wrapper.appendChild(pre);
     });
 });
