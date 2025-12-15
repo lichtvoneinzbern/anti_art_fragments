@@ -1,9 +1,9 @@
-from watchdog.observers.kqueue import is_modified---
+---
 layout: post
 title:  "Autodesk Maya - Pythonチートシート"
 author: licht
 categories: [ maya ]
-tags: [cheat_sheat]
+tags: [ cheat_sheat ]
 image: assets/images/maya_logo.jpg
 beforetoc: "「Autodesk Maya」で使用する、Pythonコードをまとめたページ。"
 toc: true
