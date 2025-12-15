@@ -374,11 +374,11 @@ bounding_box: tuple[tuple[float]] = cmds.polyEvaluate('node_name', boundingBox=T
 # Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
 ```
 
-#### 情報をまとめてを取得 -> tuple[tuple[float]]
+#### 情報をまとめてを取得 -> dict[str, int]
 ```py
 from maya import cmds
 
-polygon_target_count_info: dict = cmds.polyEvaluate('node_name')
+polygon_target_count_info: dict[str, int] = cmds.polyEvaluate('node_name')
 # >>> {'vertex': 21, 'edge': 40, 'face': 21, 'uvcoord': 42, 'triangle': 38, 'shell': 1, 'uvShell': 0, 'vertexComponent': 0, 'edgeComponent': 0, 'faceComponent': 0, 'uvComponent': 0, 'triangleComponent': 0}
 # 名前を指定しない場合は選択されているノードが対象
 # transformノードでも、Shapeノードでも取得可能
