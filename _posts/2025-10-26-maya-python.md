@@ -159,7 +159,7 @@ current_scene_extention: str = Path(cmds.file(query=True, sceneName=True)).suffi
 # シーンが保存されていない場合、空の文字列を返却
 ```
 
-### 現在開いているシーンが変更されているかを取得 -> bool
+#### 現在開いているシーンが変更されているかを取得 -> bool
 ```py
 from maya import cmds
 
@@ -198,7 +198,7 @@ if current_scene_path:
     cmds.file(current_scene_path, open=True, force=True)
 ```
 
-### 現在のシーンのパスをエクスプローラーで開く -> None
+#### 現在のシーンのパスをエクスプローラーで開く -> None
 ```py
 import subprocess
 import sys
@@ -206,12 +206,110 @@ from pathlib import Path
 
 from maya import cmds
 
+platform: str = sys.platform
 scene_dir: str = str(Path(cmds.file(query=True, sceneName=True)).resolve().parent)
 
-platform = sys.platform
 if platform == 'Windows':  # win
     subprocess.run(['explorer', f'/open,{scene_dir}'])
 elif platform == 'darwin':  # mac
     subprocess.run(['open', scene_dir])
+```
 
+## プリファレンス
+
+### 取得
+
+#### 「Joint size」を取得 -> float
+```py
+from maya import cmds
+
+cmds.jointDisplayScale(query=True, absolute=True)
+# >>> 1.0
+```
+
+#### 「IK/FK joint size」を取得 -> float
+```py
+from maya import cmds
+
+cmds.jointDisplayScale(query=True, ikfk=True, absolute=True)
+# >>> 0.5
+```
+
+#### 「IK handle size」を取得 -> float
+```py
+from maya import cmds
+
+cmds.ikHandleDisplayScale(query=True)
+# >>> 1.0
+```
+
+#### 「Up axis」を取得 -> str
+```py
+from maya import cmds
+
+up_axis: str = cmds.upAxis(query=True, axis=True)
+# >>> "z"
+```
+
+#### 「Linear」を取得 -> str
+```py
+from maya import cmds
+
+liner_unit: str = cmds.currentUnit(query=True, linear=True)
+# >>> "cm"
+```
+
+#### 「Angular」を取得 -> str
+```py
+from maya import cmds
+
+angular_unit: str = cmds.currentUnit(query=True, angle=True)
+# >>> "deg"
+```
+
+#### 「Frame rate」を取得 -> str
+```py
+from maya import cmds
+
+frame_rate: str = cmds.currentUnit(query=True, time=True)
+# >>> "game" (15 fpsの場合)
+# >>> "film" (24 fpsの場合)
+# >>> "pal" (25 fpsの場合)
+# >>> "ntsc" (30 fpsの場合)
+# >>> "show" (48 fpsの場合)
+# >>> "palf" (50 fpsの場合)
+# >>> "ntscf" (60 fpsの場合)
+# >>> "29.97fps" (上記以外の場合<数値>fpsのstring)
+```
+
+#### 「Playback」の開始位置を取得 -> float
+```py
+from maya import cmds
+
+min_time: float = cmds.playbackOptions(query=True, minTime=True)
+# >>> 1.0
+```
+
+#### 「Playback」の終了位置を取得 -> float
+```py
+from maya import cmds
+
+max_time: float = cmds.playbackOptions(query=True, maxTime=True)
+# >>> 150.0
+```
+
+#### 「Animation」の開始位置を取得 -> float
+```py
+from maya import cmds
+
+start_time: float = cmds.playbackOptions(query=True, animationStartTime=True)
+# >>> 1.0
+```
+
+#### 「Animation」の終了位置を取得 -> float
+```py
+from maya import cmds
+
+max_time: float = cmds.playbackOptions(query=True, animationEndTime=True)
+# >>> 250.0
 ```
