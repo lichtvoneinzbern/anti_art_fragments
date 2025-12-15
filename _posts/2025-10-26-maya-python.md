@@ -1,4 +1,4 @@
----
+from watchdog.observers.kqueue import is_modified---
 layout: post
 title:  "Autodesk Maya - Pythonチートシート"
 author: licht
@@ -24,7 +24,7 @@ maya_location: str = os.environ["MAYA_LOCATION"]
 # >>> "C:/Program Files/Autodesk/Maya2024"
 ```
 
-#### スクリプトパスを全て取得 -> list[str]
+#### 「MAYA_SCRIPT_PATH」を全て取得 -> list[str]
 
 ```py
 import os
@@ -33,7 +33,7 @@ script_paths: list[str] = [path for path in os.environ["MAYA_SCRIPT_PATH"].split
 # >>> ['C:/Users/owner/scripts', ...]
 ```
 
-#### プラグインパスをすべて取得 -> list[str]
+#### 「MAYA_PLUG_IN_PATH」すべて取得 -> list[str]
 
 ```py
 import os
@@ -42,7 +42,7 @@ plugin_paths: list[str] = [path for path in os.environ["MAYA_PLUG_IN_PATH"].spli
 # >>> ['C:/Users/owner/Documents/maya/2024/plug-ins', ...]
 ```
 
-#### モジュールパスを全て取得 -> list[str]
+#### 「MAYA_MODULE_PATH」を全て取得 -> list[str]
 
 ```py
 import os
@@ -51,7 +51,7 @@ module_paths: list[str] = [path for path in os.environ["MAYA_MODULE_PATH"].split
 # >>> ['C:/Program Files/Autodesk/Maya2024/modules', ...]
 ```
 
-#### PYTHONPATHを全て取得 -> list[str]
+#### 「PYTHONPATH」を全て取得 -> list[str]
 
 ```py
 import sys
@@ -87,7 +87,7 @@ python_minor_version: str = sys.version_info.minor
 # >>> "10"
 ```
 
-### 設定
+### 実行
 
 #### スクリプト自身のディレクトリをPythonパスに追加 -> None
 
@@ -101,7 +101,7 @@ sys.path.append(str(Path(__file__).parent))
 #### リモートデバッグ用にコマンドポートを開く -> None
 
 ```py
-import maya.cmds as cmds
+from maya import cmds
 
 # connect_command_port("4434")  # Maya 2023
 # connect_command_port("4435")  # Maya 2024
@@ -113,11 +113,10 @@ if not cmds.commandPort("4434", q=True):
 以下のようなページを参考に、コードエディタ側の設定も行う必要があります。
 - [MayaのスクリプトをPyCharmで楽にコーディングする](https://qiita.com/paty-6991/items/cdb59416761e9f35008f)
 - [Visual Studio Codeの機能拡張「MayaCode」でスクリプトを直接MAYAに送信・実行する方法](https://liquidjumper.com/programming/python/visual-studio-code_mayacode_maya)
+- [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
 
 ### 参考資料
-
 - [環境変数(Maya 公式)](https://help.autodesk.com/view/MAYAUL/2024/JPN/?guid=GUID-925EB3B5-1839-45ED-AA2E-3184E3A45AC7)
-- [MayaCharm README.md](https://github.com/cmcpasserby/MayaCharm/blob/master/README.md)
 
 ***
 
@@ -128,9 +127,9 @@ if not cmds.commandPort("4434", q=True):
 #### 現在開いているシーンのパスを取得 -> str
 
 ```py
-import maya.cmds as cmds
+from maya import cmds
 
-current_scene_path: str = cmds.file(q=True, sn=True)
+current_scene_path: str = cmds.file(query=True, sceneName=True)
 # >>> "C:/Users/owner/Desktop/test.ma"
 # シーンが保存されていない場合、空の文字列を返却
 ```
@@ -139,9 +138,10 @@ current_scene_path: str = cmds.file(q=True, sn=True)
 
 ```py
 from pathlib import Path
-import maya.cmds as cmds
 
-current_scene_name: str = Path(cmds.file(q=True, sn=True)).stem
+from maya import cmds
+
+current_scene_name: str = Path(cmds.file(query=True, sceneName=True)).stem
 # >>> "test"
 # シーンが保存されていない場合、空の文字列を返却
 ```
@@ -151,38 +151,67 @@ current_scene_name: str = Path(cmds.file(q=True, sn=True)).stem
 
 ```py
 from pathlib import Path
-import maya.cmds as cmds
 
-current_scene_extention: str = Path(cmds.file(q=True, sn=True)).suffix.lstrip('.')
+from maya import cmds
+
+current_scene_extention: str = Path(cmds.file(query=True, sceneName=True)).suffix.lstrip('.')
 # >>> "ma"
 # シーンが保存されていない場合、空の文字列を返却
 ```
 
-### 設定
+### 現在開いているシーンが変更されているかを取得 -> bool
+```py
+from maya import cmds
+
+is_modified: bool = cmds.file(query=True, modified=True)
+# >>> True
+```
+
+
+### 実行
 
 #### 新規シーンを開く -> None
 
 ```py
-import maya.cmds as cmds
+from maya import cmds
 
-cmds.file(new=True, f=True)
+cmds.file(new=True, force=True)
 ```
 
 #### 指定したパスのシーンを開く -> None
 
 ```py
-import maya.cmds as cmds
+from maya import cmds
 
-cmds.file("path/to/scene.ma", o=True, f=True, iv=True)  # iv == ignoreVersion
+cmds.file("path/to/scene.ma", open=True, force=True, ignoreVersion=True)
 ```
 
 #### 現在開いているシーンを開き直す -> None
 
 ```py
 from pathlib import Path
-import maya.cmds as cmds
 
-current_scene_path: str = cmds.file(q=True, sn=True)
+from maya import cmds
+
+current_scene_path: str = cmds.file(query=True, sceneName=True)
 if current_scene_path:
-    cmds.file(current_scene_path, o=True, f=True)
+    cmds.file(current_scene_path, open=True, force=True)
+```
+
+### 現在のシーンのパスをエクスプローラーで開く -> None
+```py
+import subprocess
+import sys
+from pathlib import Path
+
+from maya import cmds
+
+scene_dir: str = str(Path(cmds.file(query=True, sceneName=True)).resolve().parent)
+
+platform = sys.platform
+if platform == 'Windows':  # win
+    subprocess.run(['explorer', f'/open,{scene_dir}'])
+elif platform == 'darwin':  # mac
+    subprocess.run(['open', scene_dir])
+
 ```
