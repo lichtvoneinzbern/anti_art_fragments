@@ -3,7 +3,7 @@ layout: post
 title:  "Autodesk Maya - Pythonチートシート"
 author: licht
 categories: [ maya ]
-# tags: [red, yellow]
+tags: [cheat_sheat]
 image: assets/images/maya_logo.jpg
 beforetoc: "「Autodesk Maya」で使用する、Pythonコードをまとめたページ。"
 toc: true
