@@ -310,6 +310,78 @@ start_time: float = cmds.playbackOptions(query=True, animationStartTime=True)
 ```py
 from maya import cmds
 
-max_time: float = cmds.playbackOptions(query=True, animationEndTime=True)
+end_time: float = cmds.playbackOptions(query=True, animationEndTime=True)
 # >>> 250.0
 ```
+
+## ポリゴン
+
+### 取得
+
+#### フェースの数を取得 -> int
+```py
+from maya import cmds
+
+face_count: int = cmds.polyEvaluate('node_name', face=True)
+# >>> 21
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
+#### エッジの数を取得 -> int
+```py
+from maya import cmds
+
+edge_count: int = cmds.polyEvaluate('node_name', edge=True)
+# >>> 40
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
+#### 頂点の数を取得 -> int
+```py
+from maya import cmds
+
+vertex_count: int = cmds.polyEvaluate('node_name', vertex=True)
+# >>> 21
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
+#### 三角フェースの数を取得 -> int
+```py
+from maya import cmds
+
+triangle_count: int = cmds.polyEvaluate('node_name', triangle=True)
+# >>> 38
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
+#### バウンディングボックスを取得 -> tuple[tuple[float]]
+```py
+from maya import cmds
+
+bounding_box: tuple[tuple[float]] = cmds.polyEvaluate('node_name', boundingBox=True)
+# >>> ((-1.000000238418579, 1.0), (-1.0, 1.0), (-1.0000004768371582, 1.0000001192092896))
+# ((x_min, x_max), (y_min, y_max), (z_min, z_max))
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
+#### 情報をまとめてを取得 -> tuple[tuple[float]]
+```py
+from maya import cmds
+
+polygon_target_count_info: dict = cmds.polyEvaluate('node_name')
+# >>> {'vertex': 21, 'edge': 40, 'face': 21, 'uvcoord': 42, 'triangle': 38, 'shell': 1, 'uvShell': 0, 'vertexComponent': 0, 'edgeComponent': 0, 'faceComponent': 0, 'uvComponent': 0, 'triangleComponent': 0}
+# 名前を指定しない場合は選択されているノードが対象
+# transformノードでも、Shapeノードでも取得可能
+# Nothing counted : no polygonal object is selected. (ポリゴンを持たないノードの場合はエラー)
+```
+
